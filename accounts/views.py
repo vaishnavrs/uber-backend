@@ -69,7 +69,7 @@ class LoginInitiateView(APIView):
                 print("login otp",otp)
                 if otp:
                     Otp.objects.create(user=user,otp_code = otp)
-                    return Response({"msg":"otp generated"},status=status.HTTP_201_CREATED)
+                    return Response({"msg":"otp generated","otp":otp},status=status.HTTP_201_CREATED)
                 return Response({"error":"otp generation failed"},status=status.HTTP_400_BAD_REQUEST)
             except User.DoesNotExist:
                  return Response({"msg": "User not found"}, status=status.HTTP_404_NOT_FOUND)
