@@ -78,6 +78,7 @@ class LoginInitiateView(APIView):
 
 class LoginVerificationView(APIView):
     def post(self, request):
+        print("data=",request.data)
         serializer = OtpVerifySer(data=request.data)
         if serializer.is_valid():
             phone = serializer.validated_data['phone']
